@@ -9,6 +9,8 @@ library(vegan)
 library(ape)
 library(dplyr)
 
+#Code used for RQ1
+
 #Latitude vs richness model 
 latitude<- read.csv ("latitude.csv", row.names = 1)
 
@@ -65,7 +67,7 @@ corr_evenness <- cor.test(x=latitude$Latitude, y=latitude$Evenness, method = 'sp
 corr_evenness
 
 
-#RQ2
+#Code used for RQ2
 
 #boxplot for diversity
 highlowland<- read.csv("highlandlowland.csv", row.names = 1)
@@ -142,7 +144,7 @@ ano = anosim(m_com, anosim_attempt$Location, distance = "bray", permutations = 9
 ano
 
 
-#RQ3
+#Code used for RQ3
 
 eastwest<- read.csv("east_west.csv", row.names = 1) #SPREADSHEET FOR BOXPLOT
 eastwest2<- read.csv("east_west2.csv", header = TRUE) #SPREADSHEET FOR ANOSIM
