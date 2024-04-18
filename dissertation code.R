@@ -1,6 +1,6 @@
 rm(list=ls())
 
-setwd("C:/Users/mendi/Documents/Dissertation")
+#set working directory here
 
 
 #install packages
@@ -10,7 +10,6 @@ library(ape)
 library(dplyr)
 
 #Latitude vs richness model 
-
 latitude<- read.csv ("latitude.csv", row.names = 1)
 
 colours <- c( "Richness" = "darkorchid")
@@ -40,7 +39,6 @@ corr_richness <- cor.test(x=latitude$Latitude, y=latitude$Richness, method = 'sp
 corr_richness
 
 #Latitude vs evenness model
-
 colours <- c( "Evenness" = "gold")
 shapes <- c("Evenness" = 16)
 ggplot() +
@@ -188,12 +186,3 @@ shapiro.test(eastwest$Richness)
 #t-test for evenness
 t.test(Evenness ~ location, data = eastwest)
 shapiro.test(eastwest$Evenness)
-
-#citation for R itself
-citation()
-#in text citation
-version$version.string
-
-#package citations
-citation("ggplot2")
-citation("vegan")
