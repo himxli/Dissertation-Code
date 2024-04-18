@@ -70,9 +70,9 @@ corr_evenness
 #Code used for RQ2
 
 #boxplot for diversity
-highlowland<- read.csv("highlandlowland.csv", row.names = 1)
+northsouth<- read.csv("northsouth.csv", row.names = 1)
 
-(diversity_boxplot <- ggplot(highlowland, aes(location, Richness)) + 
+(diversity_boxplot <- ggplot(northsouth, aes(location, Richness)) + 
     geom_boxplot(aes(fill = location)) +
     theme_bw() +
     scale_fill_manual(values = c("darkseagreen", "cornflowerblue")) +               
@@ -84,13 +84,13 @@ highlowland<- read.csv("highlandlowland.csv", row.names = 1)
           panel.grid = element_blank(),                                                
           legend.position = "none"))       
 #t-test
-shapiro.test(highlowland$Richness)
-t.test(Richness ~ location, data = highlowland)
+shapiro.test(northsouth$Richness)
+t.test(Richness ~ location, data = northsouth)
 
 
 #boxplot for evenness
 
-(diversity_boxplot <- ggplot(highlowland, aes(location, Evenness)) + 
+(diversity_boxplot <- ggplot(northsouth, aes(location, Evenness)) + 
     geom_boxplot(aes(fill = location)) +
     theme_bw() +
     scale_fill_manual(values = c("darkseagreen", "cornflowerblue")) +               
@@ -103,12 +103,12 @@ t.test(Richness ~ location, data = highlowland)
           legend.position = "none"))      
 
 #t test for evenness
-shapiro.test(highlowland$Evenness)
-t.test(Evenness ~ location, data = highlowland)
+shapiro.test(northsouth$Evenness)
+t.test(Evenness ~ location, data = northsouth)
 
 
 #NMDS plot
-nmds_rq2 <- read.csv ("NMDS_attempt.csv", row.names = 1)
+nmds_rq2 <- read.csv ("NMDS.csv", row.names = 1)
 
 dist <- vegdist(nmds_rq2,  method = "bray")
 
@@ -137,10 +137,10 @@ for(i in unique(group)) {
 orditorp(NMDS, display = "sites", col = c(rep("black",5),
                                          rep("black", 7)), air = 0.01, cex = 1.25)
 #ANOSIM 
-anosim_attempt = read.csv("ANOSIM_RQ2.csv", header= TRUE)
-com = anosim_attempt[,3:ncol(anosim_attempt)]
+anosim_RQ2 = read.csv("ANOSIM_RQ2.csv", header= TRUE)
+com = anosim_RQ2[,3:ncol(anosim_RQ2)]
 m_com = as.matrix(com)
-ano = anosim(m_com, anosim_attempt$Location, distance = "bray", permutations = 9999)
+ano = anosim(m_com, anosim_RQ2$Location, distance = "bray", permutations = 9999)
 ano
 
 
