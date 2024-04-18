@@ -123,21 +123,21 @@ NMDS.scree(dist)
 
 set.seed(2)
 
-NMDS3 <- metaMDS(nmds_rq2, k = 2, trymax = 100, trace = F, autotransform = FALSE, distance="bray")
-plot(NMDS3)
+NMDS <- metaMDS(nmds_rq2, k = 2, trymax = 100, trace = F, autotransform = FALSE, distance="bray")
+plot(NMDS)
 
 colors = c(rep("cornflowerblue", 5), rep("darkseagreen", 7))
 
-ordiplot(NMDS3, type = "n")
+ordiplot(NMDS, type = "n")
 for(i in unique(group)) {
-  ordihull(NMDS3$point[grep(i, group),], draw="polygon",
+  ordihull(NMDS$point[grep(i, group),], draw="polygon",
            groups = group[group == i],col = colors[grep(i,group)],label=F) } 
 
 
-orditorp(NMDS3, display = "sites", col = c(rep("black",5),
+orditorp(NMDS, display = "sites", col = c(rep("black",5),
                                          rep("black", 7)), air = 0.01, cex = 1.25)
 #ANOSIM 
-anosim_attempt = read.csv("NMDS_attempt.csv", header= TRUE)
+anosim_attempt = read.csv("ANOSIM_RQ2.csv", header= TRUE)
 com = anosim_attempt[,3:ncol(anosim_attempt)]
 m_com = as.matrix(com)
 ano = anosim(m_com, anosim_attempt$Location, distance = "bray", permutations = 9999)
