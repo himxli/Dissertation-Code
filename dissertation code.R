@@ -112,7 +112,7 @@ nmds_rq2 <- read.csv ("NMDS.csv", row.names = 1)
 
 dist <- vegdist(nmds_rq2,  method = "bray")
 
-NMDS.scree <- function(nmds_rq2) 
+NMDS.scree <- function(nmds_rq2) {
   plot(rep(1, 10), replicate(10, metaMDS(nmds_rq2, autotransform = F, k = 1)$stress), xlim = c(1, 10),ylim = c(0, 0.30), xlab = "# of Dimensions", ylab = "Stress", main = "NMDS stress plot")
   for (i in 1:10) {
     points(rep(i + 1,10),replicate(10, metaMDS(nmds_rq2, autotransform = F, k = i + 1)$stress))
