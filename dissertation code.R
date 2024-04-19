@@ -126,6 +126,7 @@ set.seed(2)
 NMDS <- metaMDS(nmds_rq2, k = 2, trymax = 100, trace = F, autotransform = FALSE, distance="bray")
 plot(NMDS)
 
+group = c(rep("Group1", 5), rep("Group2", 7))
 colors = c(rep("cornflowerblue", 5), rep("darkseagreen", 7))
 
 ordiplot(NMDS, type = "n")
